@@ -1,0 +1,19 @@
+services:
+  next-app:
+    build:
+      context: .
+      dockerfile: prod.Dockerfile
+    restart: always
+    ports:
+      - 3000
+    networks:
+      - dokploy-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.pandinhas-life.rule=Host(`links.rafahtech.com`)"
+      - "traefik.http.routers.pandinhas-life.entrypoints=websecure"
+      - "traefik.http.routers.pandinhas-life.tls.certResolver=letsencrypt"
+      - "traefik.http.services.pandinhas-life.loadbalancer.server.port=3000"
+networks:
+  dokploy-network:
+    external: true
