@@ -10,10 +10,10 @@ services:
       - dokploy-network
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.pandinhas-life.rule=Host(`links.rafahtech.com`)"
-      - "traefik.http.routers.pandinhas-life.entrypoints=websecure"
-      - "traefik.http.routers.pandinhas-life.tls.certResolver=letsencrypt"
-      - "traefik.http.services.pandinhas-life.loadbalancer.server.port=3000"
+      - "traefik.http.routers.links-rafahtech.rule=Host(`links.rafahtech.com`)"
+      - "traefik.http.routers.links-rafahtech.entrypoints=websecure"
+      - "traefik.http.routers.links-rafahtech.tls.certResolver=letsencrypt"
+      - "traefik.http.services.links-rafahtech.loadbalancer.server.port=3000"
 networks:
   dokploy-network:
     external: true
