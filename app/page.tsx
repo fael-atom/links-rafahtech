@@ -117,7 +117,7 @@ const ProfileSection = () => (
       <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full p-1">
         <div className="w-full h-full bg-white rounded-full p-1">
           <Image
-            src="/rafael.jpeg"
+            src="/rafael.png"
             alt="Rafael Mota"
             width={152}
             height={152}
