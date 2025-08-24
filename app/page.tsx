@@ -9,58 +9,66 @@ const socialLinks = [
     name: 'Nosso site',
     url: 'https://rafahtech.com',
     icon: Globe,
-    color: 'from-cyan-500 to-blue-600',
-    hoverColor: 'hover:from-cyan-600 hover:to-blue-700'
+    color: 'from-cyan-500 to-cyan-600',
+    hoverColor: 'hover:from-cyan-600 hover:to-blue-700',
+    display: true
   },
   {
     name: 'Templates N8N',
     url: 'https://www.instagram.com/rafahtech',
     icon: LayoutDashboard,
-    color: 'from-orange-500 to-orange-700',
-    hoverColor: 'hover:from-orange-400 hover:to-orange-700'
+    color: 'from-orange-500 to-orange-600',
+    hoverColor: 'hover:from-orange-400 hover:to-orange-700',
+    display: false
   },
   {
     name: 'E-book Grátis: Seu Negócio com IA',
     url: 'https://rafahtech.com/ebook',
     icon: BookCheck,
-    color: 'from-yellow-500 to-yellow-700',
-    hoverColor: 'hover:from-yellow-600 hover:to-yellow-700'
+    color: 'from-yellow-500 to-yellow-600',
+    hoverColor: 'hover:from-yellow-600 hover:to-yellow-700',
+    display: false
   },
   {
     name: 'WhatsApp',
     url: 'https://wa.me/5512991724072',
     icon: MessageCircle,
     color: 'from-green-500 to-green-600',
-    hoverColor: 'hover:from-green-600 hover:to-green-700'
+    hoverColor: 'hover:from-green-600 hover:to-green-700',
+    display: true
   },
   {
     name: 'Instagram',
     url: 'https://www.instagram.com/rafahtech',
     icon: Instagram,
     color: 'from-pink-500 to-purple-600',
-    hoverColor: 'hover:from-pink-600 hover:to-purple-700'
+    hoverColor: 'hover:from-pink-600 hover:to-purple-700',
+    display: true
   },
   
   {
     name: 'Facebook',
     url: 'https://www.facebook.com/rafahtech.oficial',
     icon: Facebook,
-    color: 'from-blue-600 to-blue-700',
-    hoverColor: 'hover:from-blue-700 hover:to-blue-800'
+    color: 'from-blue-600 to-blue-600',
+    hoverColor: 'hover:from-blue-700 hover:to-blue-800',
+    display: true
   },
   {
     name: 'TikTok',
     url: 'https://www.tiktok.com/@rafahtech.ai',
     icon: TicketIcon,
-    color: 'from-black to-gray-700',
-    hoverColor: 'hover:from-black hover:to-gray-800'
+    color: 'from-gray-700 to-black',
+    hoverColor: 'hover:from-black hover:to-gray-800',
+    display: true
   },
   {
     name: 'LinkedIn',
     url: 'https://www.linkedin.com/company/rafahtech',
     icon: Linkedin,
     color: 'from-blue-400 to-blue-500',
-    hoverColor: 'hover:from-blue-700 hover:to-blue-800'
+    hoverColor: 'hover:from-blue-500 hover:to-blue-600',
+    display: true
   },
   
 ];
@@ -265,7 +273,10 @@ export default function Home() {
             variants={containerVariants}
           >
             {socialLinks.map((link, index) => (
+               link.display && 
+            
               <LinkButton key={link.name} link={link} index={index} />
+          
             ))}
           </motion.div>
           
