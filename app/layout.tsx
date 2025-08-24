@@ -33,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="pt_BR">
       <body className={`${inter.className} ${poppins.variable} font-sans antialiased`}>
         {children}
       </body>
