@@ -11,19 +11,19 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: 'Rafael Mota - CEO Rafah Tech',
-  description: 'CEO e Fundador da Rafah Tech. Transformando ideias em soluções tecnológicas inovadoras.',
-  keywords: 'Rafael Mota, CEO, Rafah Tech, tecnologia, inovação, desenvolvimento',
+  description: 'Especialista en Automatización. Soluciones Innovadoras con Inteligencia artificial.',
+  keywords: 'Rafael Mota, CEO, Rafah Tech, tecnología, innovación, automatización, inteligencia artificial, soluciones tecnológicas',
   authors: [{ name: 'Rafael Mota' }],
   openGraph: {
     title: 'Rafael Mota - CEO Rafah Tech',
-    description: 'CEO e Fundador da Rafah Tech. Transformando ideias em soluções tecnológicas inovadoras.',
+    description: 'Especialista en Automatización. Soluciones Innovadoras con Inteligencia artificial.',
     type: 'profile',
-    locale: 'pt_BR',
+    locale: 'es_PE',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Rafael Mota - CEO Rafah Tech',
-    description: 'CEO e Fundador da Rafah Tech. Transformando ideias em soluções tecnológicas inovadoras.',
+    description: 'Especialista en Automatización. Soluciones Innovadoras con Inteligencia artificial.',
   },
 };
 
@@ -33,9 +33,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt_BR">
+    <html lang="es_PE">
       <body className={`${inter.className} ${poppins.variable} font-sans antialiased`}>
-        {children}
+      {children}
       </body>
     </html>
   );
