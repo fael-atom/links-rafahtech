@@ -18,23 +18,24 @@ import {
   LayoutDashboard,
 } from "lucide-react";
 import Image from "next/image";
+import { useState } from "react";
 
-const socialLinks = [
+const mainLinks = [
   {
-    name: "Nuestro sitio",
-    url: "https://rafahtech.com",
-    icon: Globe,
-    color: "from-cyan-500 to-cyan-600",
-    hoverColor: "hover:from-cyan-600 hover:to-blue-700",
+    name: "WhatsApp",
+    url: "https://wa.me/5512991724072",
+    icon: MessageCircle,
+    color: "from-green-500 to-green-600",
+    hoverColor: "hover:from-green-600 hover:to-green-700",
     display: true,
   },
-   {
+  {
     name: "E-book Gratis: Tu Negocio con IA",
     url: "https://rafahtech.com/ebook",
     icon: BookCheck,
     color: "from-yellow-500 to-yellow-600",
     hoverColor: "hover:from-yellow-600 hover:to-yellow-700",
-    display: true,
+    display: false,
   },
   {
     name: "Plantillas N8N",
@@ -45,19 +46,30 @@ const socialLinks = [
     display: false,
   },
   {
-    name: "WhatsApp",
-    url: "https://wa.me/5512991724072",
-    icon: MessageCircle,
-    color: "from-green-500 to-green-600",
-    hoverColor: "hover:from-green-600 hover:to-green-700",
+    name: "Nuestro sitio",
+    url: "https://rafahtech.com",
+    icon: Globe,
+    color: "from-cyan-500 to-cyan-600",
+    hoverColor: "hover:from-cyan-600 hover:to-blue-700",
     display: true,
   },
+];
+
+const socialLinksAccordion = [
   {
     name: "Instagram",
     url: "https://www.instagram.com/rafahtech",
     icon: Instagram,
     color: "from-pink-500 to-purple-600",
     hoverColor: "hover:from-pink-600 hover:to-purple-700",
+    display: true,
+  },
+  {
+    name: "YouTube",
+    url: "https://www.youtube.com/@rafahtech",
+    icon: Youtube, // Usando o ícone outline do lucide-react
+    color: "from-red-400 to-red-500",
+    hoverColor: "hover:from-red-500 hover:to-red-600",
     display: true,
   },
   {
@@ -71,7 +83,16 @@ const socialLinks = [
   {
     name: "TikTok",
     url: "https://www.tiktok.com/@rafahtech.ai",
-    icon: TicketIcon,
+    icon: () => (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 256 256"
+        fill="currentColor"
+        className="w-5 h-5 text-white"
+      >
+        <path d="M226.8,88.1c-24.4,0-44.2-19.8-44.2-44.2V32h-44.2V160c0,24.4-19.8,44.2-44.2,44.2c-24.4,0-44.2-19.8-44.2-44.2 c0-24.4,19.8-44.2,44.2-44.2c6.1,0,11.9,1.2,17.2,3.4V64.1c-5.6-0.7-11.3-1.1-17.2-1.1C44.2,63,0,107.2,0,160 c0,52.8,44.2,96.9,96.9,96.9c52.8,0,96.9-44.2,96.9-96.9v-44.2C144.6,63,170.7,88.1,226.8,88.1z" />
+      </svg>
+    ),
     color: "from-gray-700 to-black",
     hoverColor: "hover:from-black hover:to-gray-800",
     display: true,
@@ -98,6 +119,7 @@ const containerVariants = {
 };
 
 import type { Variants } from "framer-motion";
+import { Youtube } from "lucide-react";
 
 const itemVariants: Variants = {
   hidden: { y: 20, opacity: 0 },
@@ -234,7 +256,7 @@ const ProfileSection = () => (
 );
 
 type LinkButtonProps = {
-  link: (typeof socialLinks)[number];
+  link: (typeof mainLinks)[number];
   index: number;
 };
 
@@ -267,7 +289,37 @@ const LinkButton = ({ link, index }: LinkButtonProps) => (
   </motion.a>
 );
 
+// Accordion Button
+const AccordionButton = ({
+  isOpen,
+  toggle,
+}: {
+  isOpen: boolean;
+  toggle: () => void;
+}) => (
+  <button
+    className={`
+      group relative w-full max-w-md mx-auto block p-4 rounded-2xl
+      bg-gradient-to-r from-gray-500 to-gray-700 hover:from-gray-600 hover:to-gray-800
+      transform transition-all duration-300 ease-out
+      hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25
+      active:scale-95
+      text-white font-semibold text-lg
+    `}
+    onClick={toggle}
+    type="button"
+  >
+    <div className="flex items-center justify-center space-x-4">
+      <LayoutDashboard className="w-6 h-6 text-white" />
+      <span>Redes Sociais</span>
+      <span className="ml-2">{isOpen ? "▲" : "▼"}</span>
+    </div>
+  </button>
+);
+
 export default function Home() {
+  const [accordionOpen, setAccordionOpen] = useState(false);
+
   return (
     <div className="min-h-screen relative">
       <AnimatedBackground />
@@ -282,11 +334,51 @@ export default function Home() {
           <ProfileSection />
 
           <motion.div className="space-y-4" variants={containerVariants}>
-            {socialLinks.map(
+            {/* Render main links */}
+            {mainLinks.map(
               (link, index) =>
                 link.display && (
                   <LinkButton key={link.name} link={link} index={index} />
                 )
+            )}
+
+            {/* Accordion for social links */}
+            <AccordionButton
+              isOpen={accordionOpen}
+              toggle={() => setAccordionOpen((open) => !open)}
+            />
+
+            {accordionOpen && (
+              <div className="space-y-2 mt-2 p-4 rounded-2xl border-2 border-gray-500 w-full max-w-md mx-auto bg-gray-500/10">
+                {socialLinksAccordion.map(
+                  (link, index) =>
+                    link.display && (
+                      <motion.a
+                        key={link.name}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`
+                          group relative w-6/7 mx-auto block p-3 rounded-xl
+                          bg-gradient-to-r ${link.color} ${link.hoverColor}
+                          transform transition-all duration-300 ease-out
+                          hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25
+                          active:scale-95
+                        `}
+                        variants={itemVariants}
+                        whileHover={{ y: -2 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        <div className="flex items-center justify-center space-x-4">
+                          <link.icon className="w-5 h-5 text-white" />
+                          <span className="text-white font-medium text-md">
+                            {link.name}
+                          </span>
+                        </div>
+                      </motion.a>
+                    )
+                )}
+              </div>
             )}
           </motion.div>
 
