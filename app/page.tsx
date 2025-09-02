@@ -311,7 +311,7 @@ const AccordionButton = ({
   >
     <div className="flex items-center justify-center space-x-4">
       <LayoutDashboard className="w-6 h-6 text-white" />
-      <span>Redes Sociais</span>
+      <span>Redes Sociales</span>
       <span className="ml-2">{isOpen ? "▲" : "▼"}</span>
     </div>
   </button>
