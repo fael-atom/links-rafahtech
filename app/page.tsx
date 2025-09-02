@@ -228,7 +228,7 @@ const ProfileSection = () => (
         ¡Transforma tu empresa con automatización!
       </span>
       <br />
-      Soluciones Innovadoras con Inteligencia artificial
+      Soluciones Tecnológicas Innovadoras con Inteligencia artificial
     </motion.p>
   </motion.div>
 );
