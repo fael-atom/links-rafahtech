@@ -386,7 +386,7 @@ export default function Home() {
             <div className="flex items-center justify-center space-x-6 text-gray-400">
               <div className="flex items-center space-x-2">
                 <MapPin className="w-4 h-4" />
-                <span className="text-sm">Brasil</span>
+                <span className="text-sm">Peru</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="w-4 h-4" />
